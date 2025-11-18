@@ -1,6 +1,3 @@
-<?php
-
-?>
 
 
 <header class="header-side">
