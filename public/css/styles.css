@@ -1,5 +1,282 @@
-*{
+/* Estilos generales */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Encabezado */
+.encabezado {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.encabezado .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.navegacion ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navegacion a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navegacion a:hover {
+    color: #4CAF50;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    text-align: center;
+    padding: 150px 0 100px;
+    margin-top: 70px;
+}
+
+.hero h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.boton-principal {
+    display: inline-block;
+    background-color: white;
+    color: #4CAF50;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: transform 0.3s;
+}
+
+.boton-principal:hover {
+    transform: translateY(-2px);
+}
+
+/* Categorías */
+.categorias {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.categorias h3 {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.grid-categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.categoria-item {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    transition: transform 0.3s;
+}
+
+.categoria-item:hover {
+    transform: translateY(-5px);
+}
+
+.categoria-item img {
+    width: 100%;
+    max-width: 200px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.categoria-item h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Productos */
+.productos {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.productos h3 {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.producto-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.producto-item:hover {
+    transform: translateY(-5px);
+}
+
+.producto-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.producto-item h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.precio {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.boton-comprar {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.boton-comprar:hover {
+    background-color: #45a049;
+}
+
+/* Pie de página */
+.pie-pagina {
+    background-color: #333;
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.info-footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.columna-footer h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #4CAF50;
+}
+
+.columna-footer ul {
+    list-style: none;
+}
+
+.columna-footer ul li {
+    margin-bottom: 10px;
+}
+
+.columna-footer a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.columna-footer a:hover {
+    color: #4CAF50;
+}
+
+.derechos {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+    color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .encabezado .contenedor {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navegacion ul {
+        gap: 15px;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero {
+        padding: 120px 0 80px;
+    }
 }

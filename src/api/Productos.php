@@ -17,5 +17,5 @@ function ObtenerProductos()
     }
 }
 
-// 💥 SOLUCIÓN: Imprimir el valor de retorno de la función
+// SOLUCIÓN: Imprimir el valor de retorno de la función
 echo ObtenerProductos();
