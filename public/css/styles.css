@@ -18,6 +18,10 @@ body {
     padding: 0 20px;
 }
 
+.contenedor-main{
+    padding-top: 80px;
+    min-height: 100vh;
+}
 /* Encabezado */
 .encabezado {
     background-color: #fff;
