@@ -1,58 +1,54 @@
 <?php
-// Front controller simple
-$basePath = '/atasko'; // Ajusta si tu proyecto está en otra ruta
 
+$router = require __DIR__ . '/bootstrap/app.php';
+
+
+$basePath = '/atasko';
+
+// Asset helper function
+function asset($path) {
+    global $basePath;
+    $filePath = __DIR__ . '/public/' . ltrim($path, '/');
+    $version = file_exists($filePath) ? filemtime($filePath) : time();
+    return "{$basePath}/public/{$path}?v={$version}";
+}
+
+
+
+ob_start();
+$router->dispatch();
+$content = ob_get_clean();
+
+$isApiRequest = false;
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+if (strpos($uri, $basePath . '/api/') === 0) {
+    $isApiRequest = true;
+}
+if ($isApiRequest) {
 
-// Normalizar quitando el basePath si existe
-if (strpos($uri, $basePath) === 0) {
-    $route = substr($uri, strlen($basePath));
+    echo $content;
 } else {
-    $route = $uri;
-}
-$route = '/' . trim($route, '/');
 
-// Mapa de rutas a archivos (agrega los que necesites)
-$routes = [
-    '/' => 'index',
-    '/productos' => 'productos',
-    '/contacto' => 'contact'
-];
-
-$pageKey = $routes[$route] ?? null;
-$pageFile = $pageKey ? __DIR__ . "/views/pages/{$pageKey}.php" : null;
-
-function cssVer($path) {
-    return file_exists($path) ? filemtime($path) : time();
-}
-$cssDir = __DIR__ . '/public/css/';
-$ver = cssVer($cssDir . 'styles.css');
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Atasko - Tienda para Mascotas</title>
-    <link rel="stylesheet" href="<?php echo $basePath; ?>/public/css/styles.css?v=<?php echo $ver; ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/styles.css'); ?>">
 </head>
 <body>
 
 <?php include __DIR__ . '/views/partials/header.php'; ?>
 
 <main class="contenedor-main">
-    <?php
-    if ($pageFile && file_exists($pageFile)) {
-        include $pageFile;
-    } else {
-        http_response_code(404);
-        echo '<section class="contenedor"><h2>Página no encontrada</h2><p>La ruta solicitada no existe.</p></section>';
-    }
-    ?>
+    <?php echo $content; ?>
 </main>
 
-    <!-- Inicio Footer -->
-    <?php include __DIR__ . '/views/partials/footer.php'; ?>
+<?php include __DIR__ . '/views/partials/footer.php'; ?>
+
 </body>
 </html>
+<?php
+}
